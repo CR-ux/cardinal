@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Journal from './pages/Journal';
 
-function App() {
+const App = () => {
+
+
+  const icoso = {
+    backgroundImage: `url(${
+        process.env.PUBLIC_URL + "/assets/icoso.jpeg"
+    })`,
+    marginTop: "-70px",
+    fontSize: "50px",
+    backgroundSize: "100% 100%",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "none",
+    backgroundPosition: "center",
+};
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={icoso}>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/journal" element={<Journal />} />
+      </Routes>
+    </Router>
     </div>
   );
-}
+};
 
 export default App;
